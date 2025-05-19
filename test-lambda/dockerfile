@@ -1,0 +1,10 @@
+FROM golang:1.21 as build
+
+WORKDIR /app
+COPY . .
+RUN GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o main main.go
+
+FROM public.ecr.aws/lambda/go:1
+COPY --from=build /app/main ${LAMBDA_TASK_ROOT}
+
+CMD [ "main" ]
