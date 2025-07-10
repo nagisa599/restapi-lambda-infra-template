@@ -47,3 +47,4 @@ $ aws lambda invoke \
 
 Invalid base64: "{"httpMethod":"GET","body":""}"
 ```
+# nocos-infra
